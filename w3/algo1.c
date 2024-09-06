@@ -1,0 +1,9 @@
+#include <stdio.h>
+
+/*
+Write a C program to compute the sum of the two input values. If the two values are the same, then return triple their sum.
+Expected Output:
+
+3
+12
+*/
