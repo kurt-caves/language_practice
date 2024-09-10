@@ -1,4 +1,4 @@
-int *unique(int n, arr[]) {
+int *unique(int n, int arr[]) {
     int isUnique = 0;
     for(int i = 0; i < n; i++) {
         isUnique = 1;
@@ -10,6 +10,17 @@ int *unique(int n, arr[]) {
         }
         if(isUnique) {
             printf("%d ", arr[i]);
+        }
+    }
+}
+void bubbleSort(int n, int arr[]) {
+    for(int i = 0; i < n; i++) {
+        for(int j = 1; j < n; j++) {
+            if(arr[j] > arr[j-1]) {
+                int temp = arr[j];
+                arr[j] = arr[j-1];
+                arr[j-1] = temp;
+            }
         }
     }
 }
