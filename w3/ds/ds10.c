@@ -40,7 +40,6 @@ void evenAndodd(int n, int arr[]) {
             if(arr[j] % 2 == 0) {
                 arr1[i] = arr[j];
                 printf("here\n");
-                j++;
                 break;
             }
         }
