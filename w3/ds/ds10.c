@@ -39,15 +39,27 @@ void evenAndodd(int n, int arr[]) {
         for(int j = 0; j < n; j++) {
             if(arr[j] % 2 == 0) {
                 arr1[i] = arr[j];
-                printf("here\n");
-                break;
+                i++;
             }
         }
 
     }
+    for(int i = 0; i < odd; i++) {
+        for(int j = 0; i < n; j ++) {
+            if(arr[j % 2 != 0]) {
+                arr2[i] = arr[j];
+                i++;
+            }
+        }
+    }
     printf("the even array :\n" );
     for(int i = 0; i < even; i++) {
         printf("%d ", arr1[i]);
+    }
+    printf("\n");
+    printf("the odd array :\n" );
+    for(int i = 0; i < odd; i++) {
+        printf("%d ", arr2[i]);
     }
     printf("\n");
 }
