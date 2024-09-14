@@ -30,6 +30,29 @@ void shift(int n, int new, int arr[]) {
         */
        printf("%d ", newArr[i]);
     }
+    int stop = 0;
+    for(int i = newLength - 1; i >= 0; i--) {
+        if(newArr[i -1] < new && newArr[i] != 0) {
+            stop = i;
+            printf("stopping point: %d, index: %d\n", newArr[i], i);
+            break;
+        } 
+    }
+    for(int i = newLength - 1; i >= stop+1 ; i--) {
+        printf("here\n");
+        int temp = newArr[i];
+        newArr[i] = newArr[i-1];
+        newArr[i-1] = temp;   
+    }
+    for(int i = 0; i < newLength; i++) {
+        if(newArr[i] == 0) {
+            newArr[i] = new;
+        }
+    }
+    // print
+    for(int i = newLength - 1; i >= 0; i--) {
+       printf("%d ", newArr[i]);
+    }
 }
 
 int main() {
