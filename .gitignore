@@ -1,0 +1,6 @@
+# ignore all executables
+ds[0-9]*
+ex[0-9]*
+algo[0-9]*
+# dont ignore C files
+!*.c
