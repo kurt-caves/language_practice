@@ -15,11 +15,26 @@ Expected Output :
 The Second smallest element in the array is : 4
 */
 
-void secondSmallest(int arr[], int n) {
+int secondSmallest(int arr[], int n) {
     double smallest = INFINITY;
     for(int i = 0; i < n; i++) {
+        if(arr[i] < smallest)
+            smallest = arr[i];
         
     }
+    printf("smallest : %.0f\n", smallest);
+    int small = 0;
+    for(int i = 0; i < n; i++) {
+        for(int j = 1; j < n; j++) {
+            if(arr[j] < arr[j-1]) {
+                int temp = arr[j];
+                arr[j] = arr[j-1];
+                arr[j-1] = temp;
+                
+            }
+        }
+    }
+    return arr[1];
 }
 
 int main(void) {
@@ -28,11 +43,12 @@ int main(void) {
     printf("Input the size of the array : ");
     scanf("%d", &n);
     int arr[n];
-    printf("Input 5 elements in the array :");
+    printf("Input 5 elements in the array :\n");
     for(int i = 0; i < n; i++) {
         printf("element - %d : ", i);
         scanf("%d", &arr[i]);
     }
-    secondSmallest(arr, n);
+    int smallone = secondSmallest(arr, n);
+    printf("Here is the second smallest element : %d\n", smallone);
     return 0;
 }
