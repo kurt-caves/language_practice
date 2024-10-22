@@ -39,4 +39,8 @@ int main(void) {
     printf("Address of pointer ab : %p\n", ab);
     printf("Content of pointer ab : %d\n", *ab);
 
+    m = 7;
+    printf("The pointer variable ab is assigned with the value 7 now.\n");
+    printf("Address of m : %p\n", &m);
+    printf("The value of m: %d\n", m);
 }

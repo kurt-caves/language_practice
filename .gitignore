@@ -4,5 +4,7 @@ ex[0-9]*
 algo[0-9]*
 struct[0-9]*
 pointer[0-9]*
+linkedlist[0-9]*
+/venv/
 # dont ignore C files
 !*.c
