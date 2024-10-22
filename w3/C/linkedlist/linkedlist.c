@@ -28,19 +28,28 @@ node_t *create_new_node(int value) {
     return result;
 }
 
-node_t *insert_at_head(node_t **head, node_t *node_to_insert) {
-    node_to_insert->next = *head;
-    *head = node_to_insert;
+// we use a double pointer to dereference the head pointer
+// so that we can modify the actual head
+node_t *insert_at_head(node_t **node, node_t *node_to_insert) {
+    
+    node_to_insert->next = *node;
+    *node = node_to_insert;
     // printf("Value of head: %p\n", head);
     return node_to_insert;
+}
+
+void insert_after_node(node_t *node, node_t *newnode) {
+    node->next = newnode;
+    newnode->next = node->next;
 }
 
 int main(void) {
     node_t *head = NULL;
     node_t *tmp;
    
-    for(int i = 0; i < 25; i++) {
+    for(int i = 0; i < 5; i++) {
         tmp = create_new_node(i);
+        
         insert_at_head(&head, tmp);
         // printf("Value of head2: %p\n", head);
         
