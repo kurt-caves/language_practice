@@ -43,5 +43,8 @@ int main(void) {
     printf("address of z = %p\n", &cht);
 
     printf("value at address of m = %d\n", *(&m));
-    printf("value at address of m = %d\n", *(&m));
+    printf("value at address of fx = %f\n", *(&fx));
+    printf("value at address of cht = %c\n", *(&cht));
+
+    // printf("address of m = %p\n", *m);
 }
