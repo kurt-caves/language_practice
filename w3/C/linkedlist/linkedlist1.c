@@ -16,62 +16,77 @@ Expected Output :
  Data = 7 
 */
 
+
 struct node
 {
-    int value;
-    struct node *next;
-};
+    int num;
+    struct node *nextptr; // address of the next node
+} *stnode; // pointer to struct node
 
-typedef struct node node_t;
+void createNodeList(int n) {
+    struct node *fnNode, *tmp;
+    int num, i;
 
-node_t* create_node(int value) {
-    node_t *new_node = malloc(sizeof(node_t));
-    new_node->value = value;
-    new_node->next = NULL;
-    return new_node;
+    // allocate memory for first node
+    stnode = malloc(sizeof(struct node));
+    if(stnode == NULL) {
+        printf("Memory allocation failed");
+    }
+    else {
+        printf("Input data for node 1: ");
+        scanf("%d", &num);
+        stnode->num = num;
+        stnode->nextptr = NULL;
+        // tmp is now the node
+        tmp = stnode;
+
+        for(i=2; i <=n; i++) {
+            // allocate memory for each new node
+            fnNode = malloc(sizeof(struct node));
+            // Checking if memory allocation is successful
+            if(fnNode == NULL) {
+                printf(" Memory can not be allocated.");
+                break;
+            }
+            else {
+                printf(" Input data for node %d : ", i);
+                scanf(" %d", &num);
+                fnNode->num = num;
+                fnNode->nextptr = NULL;
+
+                tmp->nextptr = fnNode;
+                tmp = tmp->nextptr;
+            }
+
+    }
+    }
 }
 
-void connect_nodes(node_t **head, node_t *node) {
-    node->next = *head;
-    *head = node;
-
-} 
-
-void print(node_t *head) {
-    node_t *tmp = head;
-    while(tmp != NULL){
-        printf("node: %d\n", tmp->value);
-        tmp = tmp->next;
+void printList() {
+    struct node *tmp;
+    tmp = stnode;
+    while(tmp != NULL) {
+        printf("node data : %d\n", tmp->num);
+        tmp = tmp->nextptr;
     }
 }
 
 int main(void) {
-    
-    node_t *head; // we have a pointer to a node_t
-    node_t n1, n2, n3;
     int n = 0;
-    printf("How many links do you want to make : ");
+    printf("\n\n Linked List : To create and display Singly Linked List :\n");
+    printf("-------------------------------------------------------------\n");
+
+    // Inputting the number of nodes for the linked list
+    printf(" Input the number of nodes : ");
     scanf("%d", &n);
-    int value = 0;
-    // for(int i = 0; i < n; i++) {
-    //     printf("Input data for node %d :", i);
-    //     scanf("%d", &value);
-        
-    // }
-    n1.value = 1;
-    n2.value = 2;
-    n3.value = 3;
 
-    head = &n1;
-    n1.next = &n2;
-    n2.next = &n3;
-    n3.next = NULL;
-
-    print(head);
-
-
-
-    
+    // Creating the linked list with n nodes
+    createNodeList(n);
+    printList();
 }
+
+
+
+
 
 
