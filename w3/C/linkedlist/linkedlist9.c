@@ -2,24 +2,22 @@
 #include <stdlib.h>
 
 /*
-7. Write a program in C to delete the first node of a Singly Linked List.
+9. Write a program in C to delete the last node of a Singly Linked List.
 Test Data :
 Input the number of nodes : 3
-Input data for node 1 : 2
-Input data for node 2 : 3
-Input data for node 3 : 4
+Input data for node 1 : 1
+Input data for node 2 : 2
+Input data for node 3 : 3
 Expected Output :
 
  Data entered in the list are :                                                                               
+ Data = 1                                                                                                     
  Data = 2                                                                                                     
  Data = 3                                                                                                     
- Data = 4                                                                                                     
                                                                                                               
- Data of node 1 which is being deleted is :  2                                                                
-                                                                                                              
- Data, after deletion of first node :                                                                         
- Data = 3                                                                                                     
- Data = 4 
+ The new list after deletion the last node are  :                                                             
+ Data = 1                                                                                                     
+ Data = 2 
 */
 
 struct node {
@@ -63,9 +61,7 @@ void printList() {
     }
 }
 
-void deleteFirstNode() {
-    head = head->nextptr;
-}
+
 
 int main(void) {
     int n = 0;
@@ -73,7 +69,6 @@ int main(void) {
     scanf("%d", &n);
     createList(n);
     printList();
-    printf("Removing first link from linked list\n");
-    deleteFirstNode();
-    printList();
+
+
 }
