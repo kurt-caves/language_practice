@@ -61,6 +61,21 @@ void printList() {
     }
 }
 
+void deleteLast() {
+    struct node *tmp, *prev;
+    tmp = head;
+    prev = NULL;
+    while(tmp != NULL) {
+        if(tmp->nextptr == NULL) {
+            printf("tmp value : %d\n", tmp->value);
+            prev->nextptr = NULL;
+            //head = prev;
+            break;
+        }
+        prev = tmp;
+        tmp = tmp->nextptr;
+    }
+}
 
 
 int main(void) {
@@ -68,6 +83,10 @@ int main(void) {
     printf("Input the number of nodes (3 or more) : ");
     scanf("%d", &n);
     createList(n);
+    printf("First print list: \n");
+    printList();
+    deleteLast();
+    printf("List after deletion: \n");
     printList();
 
 

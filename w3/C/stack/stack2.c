@@ -22,51 +22,87 @@ Expected Output:
 struct Node {
     int value;
     struct Node *nextptr;
-} *head;
+}; 
 
-void printList() {
-    struct Node *temp;
-    temp = head;
+void printList(struct Node **head) {
+    struct Node *temp = *head;
     while(temp != NULL) {
         printf("%d ", temp->value);
         temp = temp->nextptr;
     }
     printf("\n");
+}
+
+// handle memory allocation here
+void push(struct Node **head, int value) {
+    struct Node *newNode = malloc(sizeof(struct Node));
+    newNode->value = value;
+    newNode->nextptr = *head;
+    *head = newNode;
 
 }
 
-
-
-void createList(int n) {
-    struct Node *tmp, *newNode;
-    head = malloc(sizeof(struct Node));
-    int value = 0;
-    printf("Enter value for node 1 : ");
-    scanf("%d", &value);
-    head->value = value;
-    head->nextptr = NULL;
-    tmp = head;
-    for(int i = 2; i <= n; i++) {
-        newNode = malloc(sizeof(struct Node));
-        printf("Enter value for node %d: ", i);
-        scanf("%d", &value);
-        newNode->value = value;
-        newNode->nextptr = NULL;
-
-        tmp->nextptr = newNode;
-        tmp = newNode;
+void pop(struct Node **head) {
+    if(*head == NULL) {
+        printf("STACK IS EMPTY\n");
+        return;
     }
+    struct Node *temp, *prev;
     
+    temp = *head;
+    if(temp->nextptr == NULL) {
+        temp->nextptr = NULL;
+        *head = NULL;
+        return;
+    }
+    prev = NULL;
+    while(temp != NULL) {
+        if(prev != NULL) {
+            prev->nextptr = NULL;
+            *head = temp;
+            break;
 
+        }
+        prev = temp;
+        temp = temp->nextptr;
+    }
+    printf("\n");
 }
+
+
 
 int main(void) {
+    struct Node *head = NULL;
+    printf("Push data 1\n");
+    push(&head, 1);
+    printf("Push data 2\n");
+    push(&head, 2);
+    printf("Push data 3\n");
+    push(&head, 3);
+    printf("Push data 4\n");
+    push(&head, 4);
+    printList(&head);
+    // printf("head value : %d\n", head->value);
 
-    int n = 0;
-    printf("Input the number of nodes (3 or more) : ");
-    scanf("%d", &n);
-    createList(n);
-    printList();
+    pop(&head);
+    printf("Pop top element\n");
+    printList(&head);
+    pop(&head);
+    printf("Pop top element\n");
+    printList(&head);
+    pop(&head);
+    printf("Pop top element\n");
+    printList(&head);
+    pop(&head);
+    printf("Pop top element\n");
+    printList(&head);
+    pop(&head);
+    printf("Pop top element\n");
+    // printList(&head);
+    
+    
+
+
 
     return 0;
 }
