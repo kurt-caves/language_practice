@@ -6,6 +6,7 @@ struct[0-9]*
 pointer[0-9]*
 linkedlist[0-9]*
 stack[0-9]*
+string[0-9]*
 kernighan_ritchie/*.o
 w3/venv/
 # dont ignore C files
