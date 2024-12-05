@@ -36,21 +36,48 @@ void inorderPrint(struct Node *root) {
     }
 }
 
+struct Node *mirror(struct Node *root) {
+    if(root == NULL) {
+        return NULL;
+    }
+
+    
+
+    return root;
+
+}
+
 int main(void) {
     int val;
     char choice;
     struct Node *root = NULL;
 
-    do {
-        printf("enter value for node: ");
-        scanf("%d", &val);
-        root = insertNode(root, val);
-        printf("continue? (y/n):");
-        scanf(" %c", &choice);
-    } while (choice == 'y' || choice == 'Y');
-
+    root = insertNode(root, 10);
+    root = insertNode(root, 15);
+    root = insertNode(root, 7);
+    root = insertNode(root, 5);
+    root = insertNode(root, 3);
+    root = insertNode(root, 2);
     inorderPrint(root);
     printf("\n");
+
+    // do {
+    //     printf("enter value for node: ");
+    //     scanf("%d", &val);
+    //     root = insertNode(root, val);
+    //     printf("continue? (y/n):");
+    //     scanf(" %c", &choice);
+    // } while (choice == 'y' || choice == 'Y');
+
+    // inorderPrint(root);
+    // printf("\n");
+    
+    struct Node *newroot = NULL;
+    newroot = mirror(root);
+    printf("print newroot:\n");
+    inorderPrint(newroot);
+    printf("\n");
+
 
     return 0;
 }
