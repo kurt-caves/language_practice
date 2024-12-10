@@ -49,21 +49,31 @@ void insert(struct HashTable *table, int key, char *value) {
     int hashedKey = hashFormula(key);
     int loadFactor;
     int index = hashedKey % table->capacity;
-    int i = 0;
+    int i = 1;
     if(table->bucket[hashedKey] != NULL) {
         struct HashNode *temp = table->bucket[index];
-        printf("here1\n");
         while(temp != NULL) {
             
             if (temp->key == key) {
-                printf("here2\n");
+                // write over old key
+                printf("here\n");
                 table->bucket[hashedKey] = newNode;
+            }
+            // we have a collision
+            if((temp->key % 10) == hashedKey) {
+                printf("here\n");
+                while(table->bucket[index] != NULL) {
+                    index = i + index;
+                    i++;
+                }
+                table->bucket[index] = newNode;
+               
             }
             temp = temp->next;
         }
     }
     else {
-        printf("here else\n");
+       
         table->bucket[hashedKey] = newNode;
     }
 }
@@ -83,11 +93,13 @@ int main(void) {
     struct HashTable *table = NULL;
     table = createTable(table, 10);
 
-    insert(table, 123, "Bob");
+    insert(table, 121, "Bob");
     insert(table, 124, "Chris");
-    insert(table, 125, "John");
-    insert(table, 125, "Kurt" );
+    insert(table, 224, "John");
     insert(table, 225, "Kurt" );
+    insert(table, 225, "Art" );
+    insert(table, 325, "Jennifer");
+    insert(table, 226, "Derek");
 
     printTable(table);
     printf("\n");
