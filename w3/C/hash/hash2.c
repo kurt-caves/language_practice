@@ -43,7 +43,7 @@ struct HashTable *createTable(struct HashTable *table, int capacity) {
     return newTable;
 }
 
-// need to care abou load factor: items in table/size of table
+// need to care about load factor: items in table/size of table
 void insert(struct HashTable *table, int key, char *value) {
     struct HashNode *newNode = createNode(key, value);
     int hashedKey = hashFormula(key);
