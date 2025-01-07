@@ -9,5 +9,6 @@ stack[0-9]*
 string[0-9]*
 kernighan_ritchie/*.o
 w3/venv/
+*.hi
 # dont ignore C files
 !*.c

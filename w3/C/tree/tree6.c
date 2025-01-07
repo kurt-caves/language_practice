@@ -37,14 +37,15 @@ void inorderPrint(struct Node *root) {
 }
 
 struct Node *mirror(struct Node *root) {
-    if(root == NULL) {
+    if (root == NULL) {
         return NULL;
     }
-
-    
-
+    mirror(root->left);
+    mirror(root->right);
+    struct Node *temp = root->left;
+    root->left = root->right;
+    root->right = temp;
     return root;
-
 }
 
 int main(void) {
@@ -76,6 +77,9 @@ int main(void) {
     newroot = mirror(root);
     printf("print newroot:\n");
     inorderPrint(newroot);
+    printf("\n");
+    printf("old tree: \n");
+    inorderPrint(root);
     printf("\n");
 
 
