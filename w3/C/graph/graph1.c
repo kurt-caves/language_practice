@@ -20,20 +20,11 @@ Adjacency Matrix:
 1 0 1 1 0
 */
 
-int adjMatrix(int verts) {
-    int arr[verts][verts];
-    for (int i = 0; i < verts; i++) {
-        for(int j = 0; j < verts; j++) {
-            arr[i][j] = 0;
-        }
-    }
-    for (int i = 0; i < verts; i++) {
-        printf("\n");
-        for(int j = 0; j < verts; j++) {
-            printf("%d ", arr[i][j]);
-        }
-    }
-    printf("\n");
+# define MAX_VERTS 10
+
+
+void insertEdges(int graph[MAX_VERTS][MAX_VERTS], int edge1, int edge2) {
+    printf("insertEdges\n");
 }
 
 int main(void) {
@@ -45,16 +36,18 @@ int main(void) {
     printf("Enter the number of edges: ");
     scanf("%d", &edges);
 
+    int graph[MAX_VERTS][MAX_VERTS] = {0};
+
     int edge1 = 0;
     int edge2 = 0;
 
     for(int i = 0; i < edges; i++) {
-        printf("Enter edge %d (start end):", i + 1);
+        printf("Enter edge %d (start end): ", i + 1);
         scanf("%d %d", &edge1, &edge2);
-        insertEdges(edge1, edge2)
+        insertEdges(graph, edge1, edge2);
     }
 
-    adjMatrix(vertices);
+    
 
     return 0;
 }
