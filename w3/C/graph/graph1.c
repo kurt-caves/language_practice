@@ -23,8 +23,10 @@ Adjacency Matrix:
 # define MAX_VERTS 10
 
 
+
 void insertEdges(int graph[MAX_VERTS][MAX_VERTS], int edge1, int edge2) {
-    printf("insertEdges\n");
+    graph[edge1][edge2] = 1;
+    graph[edge2][edge1] = 1;
 }
 
 int main(void) {
@@ -46,6 +48,14 @@ int main(void) {
         scanf("%d %d", &edge1, &edge2);
         insertEdges(graph, edge1, edge2);
     }
+
+    for(int i = 0; i < vertices; i++) {
+        printf("\n");
+        for(int j = 0; j < vertices; j++) {
+            printf("%d ", graph[i][j]);
+        }
+    }
+    printf("\n");
 
     
 
