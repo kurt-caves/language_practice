@@ -13,8 +13,24 @@ Expected Output:
   48  49  50 
 */
 
+int recur(int start) {
+  if(start > 50) {
+    return 1;
+  }
+  printf("%d  ", start);
+  if(start % 10 == 0) {
+    printf("\n");
+  }
+  return recur(start + 1);
+  
+}
+
 int main(void) {
 
     printf("The natural numbers are: ");
+    printf("\n");
+    int start = 1;
+    recur(start);
+    printf("\n");
 
 }
